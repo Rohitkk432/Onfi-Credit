@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --primary: theme(colors.primary.500);
+  --scroll-color: theme(colors.gray.400);
+}
+
+input:focus {
+  --tw-ring-color: var(--primary) !important;
+  border-color: var(--tw-ring-color) !important;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: none;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scroll-color);
+  border-radius: 1rem;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scroll-color);
+}
+
+.disable-text-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
