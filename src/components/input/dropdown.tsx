@@ -5,9 +5,13 @@ import { ChevronUpDownIcon, CheckIcon } from "@heroicons/react/24/outline";
 interface DropdownProps {
   className?: string;
   selectClassName?: string;
-  options: string[];
-  selected: string;
-  setSelected: React.Dispatch<React.SetStateAction<string>>;
+  // eslint-disable-next-line
+  options: any[];
+  // eslint-disable-next-line
+  selected: any;
+  // eslint-disable-next-line
+  setSelected: React.Dispatch<React.SetStateAction<any>>;
+  dataKey?: string;
   dropdownHeight?: string;
 }
 
@@ -18,6 +22,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   selected,
   setSelected,
   dropdownHeight,
+  dataKey,
 }) => {
   const [open, setOpen] = useState(false);
 
@@ -57,12 +62,16 @@ const Dropdown: React.FC<DropdownProps> = ({
           setOpen(!open);
         }}
         className={cn(
-          `px-2 py-2 border-2 ${open ? "border-primary-500" : selected !== "" ? "border-blue-500" : "border-gray-400"} flex justify-between items-center rounded-lg`,
+          `px-2 py-2 border-2 ${open ? "border-primary-500" : selected !== "" && selected !== undefined && selected !== null ? "border-blue-500" : "border-gray-400"} flex justify-between items-center rounded-lg`,
           selectClassName,
         )}
       >
         <div className="px-4">
-          {selected !== "" ? selected : "Select Option"}
+          {selected !== "" && selected !== undefined && selected !== null
+            ? dataKey !== undefined
+              ? selected[dataKey]
+              : selected
+            : "Select Option"}
         </div>
         <ChevronUpDownIcon className="w-6 h-6" />
       </div>
@@ -81,8 +90,10 @@ const Dropdown: React.FC<DropdownProps> = ({
               }}
               className={`py-3 px-4 w-full flex items-center justify-between gap-2 text-center whitespace-pre ${idx !== 0 ? "border-t border-gray-300" : ""}`}
             >
-              <div className="">{opt}</div>
-              {selected === opt ? (
+              <div className="">
+                {dataKey !== undefined ? opt[dataKey] : opt}
+              </div>
+              {JSON.stringify(selected) === JSON.stringify(opt) ? (
                 <CheckIcon className="w-5 h-5 text-primary-500" />
               ) : (
                 <div className="w-5 h-5"></div>

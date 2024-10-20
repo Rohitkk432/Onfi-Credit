@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import cn from "classnames";
+import { useLockBodyScroll } from "@/lib/hooks/use-lock-body-scroll";
 
 interface BottomSheetProps {
   isOpen: boolean;
@@ -14,49 +15,32 @@ const BottomSheet: React.FC<React.PropsWithChildren<BottomSheetProps>> = ({
   setIsOpen,
   className,
 }) => {
-  const bottomSheetRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (isOpen) {
-      const handleClickOutside = (e: MouseEvent) => {
-        if (
-          bottomSheetRef.current &&
-          !bottomSheetRef.current.contains(e.target as Node)
-        ) {
-          setIsOpen(false);
-        }
-      };
-      // Attach the event listener when the component mounts
-      document.addEventListener("click", handleClickOutside);
-
-      // Clean up the event listener when the component unmounts
-      return () => {
-        document.removeEventListener("click", handleClickOutside);
-      };
-    }
-  }, [bottomSheetRef, isOpen]);
-
-  return isOpen ? (
+  useLockBodyScroll(isOpen);
+  return (
     <div
-      ref={bottomSheetRef}
-      className={cn(
-        `fixed inset-auto bottom-0 sm:bottom-auto bg-white border border-gray-100 w-full sm:w-auto rounded-t-2xl sm:rounded-2xl shadow-xl z-[100] flex flex-col p-1`,
-        className,
-      )}
+      className={`fixed inset-0 w-full h-full z-[100] bg-[#0000004d] transition-all sm:transition-none ease-in-out duration-300   ${isOpen ? "visible" : "invisible"}`}
+      onClick={() => setIsOpen(false)}
     >
-      <div className="w-full py-2 px-2 flex justify-end">
-        <XMarkIcon
-          onClick={(e) => {
-            e.stopPropagation();
-            setIsOpen(false);
-          }}
-          className="w-6 h-6 cursor-pointer"
-        />
+      <div
+        className={cn(
+          `absolute bottom-0 sm:bottom-auto sm:top-[50%] sm:left-[50%]  bg-white border border-gray-100 w-full sm:w-auto rounded-t-2xl sm:rounded-2xl shadow-xl z-[101] flex flex-col p-1 h-fit transition-all sm:transition-none sm:translate-x-[-50%] sm:translate-y-[-50%] ease-in-out duration-300 
+                    ${!isOpen && "translate-y-[100%]"}`,
+          className,
+        )}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="w-full py-2 px-2 flex justify-end">
+          <XMarkIcon
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsOpen(false);
+            }}
+            className="w-6 h-6 cursor-pointer"
+          />
+        </div>
+        {children}
       </div>
-      {children}
     </div>
-  ) : (
-    <></>
   );
 };
 
