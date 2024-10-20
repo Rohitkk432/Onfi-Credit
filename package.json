@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "fmt": "pretty-quick"
+    "fmt": "pretty-quick --pattern ./src/**/*"
   },
   "dependencies": {
     "@headlessui/react": "^2.1.10",
