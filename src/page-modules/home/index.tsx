@@ -36,7 +36,7 @@ const Home = () => {
     }
   }, [selectedLoanProduct]);
   return (
-    <div className="w-full bg-white overflow-x-hidden min-h-screen p-6 sm:p-10 flex gap-10">
+    <div className="w-full bg-white overflow-x-hidden min-h-[90vh] p-6 sm:p-10 flex gap-10">
       <div className="w-full flex sm:rounded-xl overflow-hidden sm:shadow-xl sm:border-2 border-gray-100 gap-4 items-center sm:p-6">
         <div className="w-full lg:w-[50%] h-full flex flex-col gap-4">
           <Dropdown
