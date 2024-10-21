@@ -17,6 +17,11 @@ input:focus {
   border-color: var(--tw-ring-color) !important;
 }
 
+input:invalid {
+  --tw-ring-color: red !important;
+  border-color: var(--tw-ring-color) !important;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;

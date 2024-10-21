@@ -21,7 +21,7 @@ const Uploader: React.FC<UploaderProps> = ({
   uploaded,
   fileTypeLabel = "document file",
   fileFormatLabel = "only .pdf format is supported. must be < 15 MB",
-  accepts = "image",
+  accepts = "document",
 }) => {
   const [files, setFiles] = useState([]);
 

@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import Dropdown from "@/components/input/dropdown";
 import Button from "@/components/button";
 import LoanDescription from "./loan-description";
+import CibilReport from "./cibil-report";
+import CrifReport from "./crif-report";
+import Uploader from "@/components/input/uploader";
 
 // Define the types for each product's details
 interface LoanProductDetails {
@@ -21,6 +24,12 @@ const Home = () => {
   const [selectedLoanProduct, setSelectedLoanProduct] = useState("");
   const [applyClick1, setApplyClick1] = useState(false);
   const loanProductKeys = Object.keys(loanProducts as LoanProducts);
+
+  // eslint-disable-next-line
+  const [propertyReportFile, setProperyReportFile] = useState<File | undefined>(
+    undefined,
+  );
+
   useEffect(() => {
     if (applyClick1) {
       setApplyClick1(false);
@@ -50,27 +59,42 @@ const Home = () => {
               </div>
             )}
           {selectedLoanProduct === "" && (
-            <div className="w-full my-auto flex items-center justify-center text-center">
+            <div className="w-full flex my-auto items-center justify-center text-center">
               Select Loan Product to apply and submit required documents
             </div>
           )}
           {selectedLoanProduct !== "" && !applyClick1 && (
-            <div className="w-full my-auto flex items-center justify-center text-center">
+            <div className="w-full hidden lg:flex my-auto items-center justify-center text-center">
               Apply to submit required documents
             </div>
           )}
           {!applyClick1 && (
             <Button
-              className="uppercase self-end"
+              className="uppercase"
               fullWidth
-              color={
-                selectedLoanProduct === "" ? "grayTransparent" : "primarySolid"
-              }
+              color={selectedLoanProduct === "" ? "graySolid" : "primarySolid"}
               disabled={selectedLoanProduct === ""}
               onClick={() => setApplyClick1(true)}
             >
               Apply
             </Button>
+          )}
+
+          {applyClick1 && (
+            <div className="w-full rounded-lg border-2 border-gray-200 p-2 text-neutral-500 font-bold text-lg lg:text-xl flex flex-col gap-4">
+              <div className="p-2 pb-0">Property Valuation Report</div>
+              <Uploader
+                setFile={(file) => {
+                  setProperyReportFile(file);
+                }}
+              />
+            </div>
+          )}
+          {applyClick1 && (
+            <>
+              <CibilReport />
+              <CrifReport />
+            </>
           )}
         </div>
         <div className="w-[50%] hidden lg:block h-full rounded-lg border border-gray-200 overflow-y-scroll overflow-x-hidden">

@@ -71,7 +71,7 @@ const Dropdown: React.FC<DropdownProps> = ({
           setOpen(!open);
         }}
         className={cn(
-          `px-2 py-2 border-2 ${open ? "border-primary-500" : selected !== "" && selected !== undefined && selected !== null ? "border-blue-500" : "border-gray-400"} flex justify-between items-center rounded-lg ${disabled ? "cursor-not-allowed" : ""}`,
+          `px-2 py-2 border-2 ${open ? "border-blue-500" : selected !== "" && selected !== undefined && selected !== null ? "border-primary-500" : "border-gray-400"} flex justify-between items-center rounded-lg ${disabled ? "cursor-not-allowed" : ""}`,
           selectClassName,
         )}
       >
@@ -84,10 +84,10 @@ const Dropdown: React.FC<DropdownProps> = ({
               ? selectPlaceholder
               : "Select Option"}
         </div>
-        <ChevronUpDownIcon className="w-6 h-6" />
+        <ChevronUpDownIcon className="w-5 h-5" />
       </div>
       <div
-        className={`absolute w-full px-2 h-[16rem] overflow-scroll top-[110%] z-[90] bg-white flex-col items-center shadow-lg border border-gray-100 rounded-lg ${open ? "flex" : "hidden"}`}
+        className={`absolute w-full px-2 h-[16rem] overflow-scroll top-[110%] z-[200] bg-white flex-col items-center shadow-lg border border-gray-100 rounded-lg ${open ? "flex" : "hidden"}`}
         style={dropdownHeight ? { height: dropdownHeight } : {}}
       >
         {options.map((opt, idx) => {
