@@ -33,7 +33,7 @@ const CibilReport: React.FC<CibilReportProps> = ({}) => {
         <Button onClick={() => setIsOpen(true)}>Generate</Button>
       </div>
       <BottomSheet isOpen={isOpen} setIsOpen={setIsOpen}>
-        <div className="flex flex-col gap-3 p-4 h-fit lg:w-[40vw] overflow-y-scroll">
+        <div className="flex flex-col gap-1 lg:gap-3 p-4 max-h-[95vh] lg:w-[40vw] overflow-y-scroll">
           <div className="text-xl lg:text-2xl font-bold text-neutral-500 mb-4">
             Generate CIBIL Report
           </div>
@@ -114,7 +114,7 @@ const CibilReport: React.FC<CibilReportProps> = ({}) => {
           >
             <Input
               type="checkbox"
-              inputClassName="!w-5 !h-5 accent-primary-500"
+              inputClassName="!w-4 !h-4 lg:!w-5 lg:!h-5 !rounded-sm lg:!rounded-md accent-primary-500"
               checked={tncCheck}
               onChange={() => {}}
             />
