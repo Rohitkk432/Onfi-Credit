@@ -30,12 +30,12 @@ const CibilReport: React.FC<CibilReportProps> = ({}) => {
     <>
       <div className="w-full rounded-lg border-2 border-gray-200 py-2 px-6 text-neutral-500 font-bold text-lg lg:text-xl flex items-center justify-between">
         <div>CIBIL Report</div>
-        <Button onClick={() => setIsOpen(true)}>Generate</Button>
+        <Button onClick={() => setIsOpen(true)}>Fetch</Button>
       </div>
       <BottomSheet isOpen={isOpen} setIsOpen={setIsOpen}>
         <div className="flex flex-col gap-1 lg:gap-3 p-4 max-h-[95vh] lg:w-[40vw] overflow-y-scroll">
           <div className="text-xl lg:text-2xl font-bold text-neutral-500 mb-4">
-            Generate CIBIL Report
+            Fetch CIBIL Report
           </div>
 
           {/* name feild */}
@@ -124,7 +124,7 @@ const CibilReport: React.FC<CibilReportProps> = ({}) => {
             </div>
           </div>
 
-          <Button fullWidth>Generate</Button>
+          <Button fullWidth>Fetch</Button>
         </div>
       </BottomSheet>
     </>
