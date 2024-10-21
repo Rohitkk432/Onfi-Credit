@@ -13,6 +13,8 @@ interface DropdownProps {
   setSelected: React.Dispatch<React.SetStateAction<any>>;
   dataKey?: string;
   dropdownHeight?: string;
+  selectPlaceholder?: string;
+  disabled?: boolean;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -23,6 +25,8 @@ const Dropdown: React.FC<DropdownProps> = ({
   setSelected,
   dropdownHeight,
   dataKey,
+  selectPlaceholder,
+  disabled,
 }) => {
   const [open, setOpen] = useState(false);
 
@@ -30,39 +34,44 @@ const Dropdown: React.FC<DropdownProps> = ({
 
   // Close the dropdown when clicking outside
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(e.target as Node)
-      ) {
-        setOpen(false);
-      }
-    };
+    if (disabled === true) {
+      setOpen(false);
+    } else {
+      const handleClickOutside = (e: MouseEvent) => {
+        if (
+          dropdownRef.current &&
+          !dropdownRef.current.contains(e.target as Node)
+        ) {
+          setOpen(false);
+        }
+      };
 
-    // Attach the event listener when the component mounts
-    document.addEventListener("click", handleClickOutside);
+      // Attach the event listener when the component mounts
+      document.addEventListener("click", handleClickOutside);
 
-    // Clean up the event listener when the component unmounts
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [dropdownRef]);
+      // Clean up the event listener when the component unmounts
+      return () => {
+        document.removeEventListener("click", handleClickOutside);
+      };
+    }
+  }, [dropdownRef, disabled]);
 
   return (
     <div
       ref={dropdownRef}
       className={cn(
-        "relative text-base lg:text-lg  disable-text-select flex flex-col",
+        `relative text-base lg:text-lg  disable-text-select flex flex-col`,
         className,
       )}
     >
       <div
         onClick={(e) => {
           e.stopPropagation();
+          if (disabled === true) return;
           setOpen(!open);
         }}
         className={cn(
-          `px-2 py-2 border-2 ${open ? "border-primary-500" : selected !== "" && selected !== undefined && selected !== null ? "border-blue-500" : "border-gray-400"} flex justify-between items-center rounded-lg`,
+          `px-2 py-2 border-2 ${open ? "border-primary-500" : selected !== "" && selected !== undefined && selected !== null ? "border-blue-500" : "border-gray-400"} flex justify-between items-center rounded-lg ${disabled ? "cursor-not-allowed" : ""}`,
           selectClassName,
         )}
       >
@@ -71,12 +80,14 @@ const Dropdown: React.FC<DropdownProps> = ({
             ? dataKey !== undefined
               ? selected[dataKey]
               : selected
-            : "Select Option"}
+            : selectPlaceholder !== undefined
+              ? selectPlaceholder
+              : "Select Option"}
         </div>
         <ChevronUpDownIcon className="w-6 h-6" />
       </div>
       <div
-        className={`absolute w-full px-2 h-[16rem] overflow-scroll top-[110%] flex-col items-center shadow-lg border border-gray-100 rounded-lg ${open ? "flex" : "hidden"}`}
+        className={`absolute w-full px-2 h-[16rem] overflow-scroll top-[110%] z-[90] bg-white flex-col items-center shadow-lg border border-gray-100 rounded-lg ${open ? "flex" : "hidden"}`}
         style={dropdownHeight ? { height: dropdownHeight } : {}}
       >
         {options.map((opt, idx) => {

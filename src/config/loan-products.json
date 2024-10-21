@@ -1,0 +1,89 @@
+{
+  "Term Loans": {
+    "Description": "Term Loans are ideal for businesses looking for funding for expansion or capital investment in the form of plant and machinery or commercial assets. You will pay EMIs for the tenor of the loan, and it functions similarly to any other form of retail loan. You can avail secured or unsecured business term loans.",
+    "ICICI Offer": {
+      "Collateral Free": true,
+      "Max Amount": "Rs. 2 crore",
+      "Scheme": "CGTMSE",
+      "Loan Tenor": "Up to 7 years",
+      "Approval Criteria": "Assessment of present income and future cash flow"
+    }
+  },
+  "GST Business Loan": {
+    "Description": "With ICICI Bank, you can avail a secured Business Loan according to your GST return. You can use any form of property - self-occupied residential, commercial, or industrial for the purpose.",
+    "Details": {
+      "Facility Type": "Overdraft",
+      "Max Amount": "Rs. 2 crore",
+      "Requirement": "Goods and Services Tax returns",
+      "Financials Needed": false
+    }
+  },
+  "InstaOD (Overdraft) Facility": {
+    "Description": "ICICI Insta OD is a fast and easy emergency loan for business needs with minimal documentation based on previous banking transactions. It is a flexible and hassle-free loan facility that can be applied for online.",
+    "Loan Amount": {
+      "Existing Customers": "Up to Rs. 15 Lakhs",
+      "New Customers": "Up to Rs. 10 Lakhs"
+    },
+    "Benefits": {
+      "Interest Payment": "Pay interest only on the utilized amount",
+      "Processing": "Online & paperless",
+      "Access to Cash": "Instant for existing customers",
+      "Sanction": "Instant for all customers",
+      "Documentation": "Minimal",
+      "Collateral": "None",
+      "Commitment Charges": "None",
+      "Prepayment Charges": "None"
+    }
+  },
+  "Customised Business Loans": {
+    "Description": "ICICI Bank offers tailored business loan products for SMEs, suited to their needs and repayment capacity.",
+    "Process": "Apply online; the bank representative will contact you to help avail the best scheme."
+  },
+  "Loans for New Entities": {
+    "Description": "ICICI Bank offers loans for new businesses in operation for at least 1 year. Business Loans are offered in Cash Credit, Overdraft, Export Credit, and non-fund based facilities.",
+    "Term Loan": {
+      "Purpose": "Commercial assets purchase and business expansion",
+      "Interest Calculation": "Based on business profile, past credit history, financial records, loan amount, and tenure",
+      "Collateral": "Residential or commercial property"
+    }
+  },
+  "Collateral Free Business Loans": {
+    "Description": "ICICI Bank offers cash credit and term loans under the CGTMSE scheme for up to Rs. 2 crore.",
+    "Scheme": "CGTMSE",
+    "Backed By": "SIDBI and Ministry of Small and Medium Enterprises",
+    "Eligibility": {
+      "All Enterprises": true,
+      "Exception": "Retail Traders"
+    }
+  },
+  "Loans without Financials": {
+    "Description": "ICICI Business Loan without financials is an innovative product offering loans based on past transaction history without the need for audited financials.",
+    "Details": {
+      "Max Amount": "Up to Rs. 1 crore",
+      "Facility Type": ["Overdraft", "Non-fund based credit"],
+      "Minimum Business Vintage": "3 years",
+      "Accessibility": "Online",
+      "Branch Network": "3000+ branches",
+      "Documentation": "Minimal"
+    }
+  },
+  "Finance for Importers & Exporters": {
+    "Description": "ICICI Bank offers Export Finance, Letter of Credit, Bank Guarantee, and foreign currency loans for import/export businesses.",
+    "Benefits": {
+      "Purpose": ["Export credit", "Buyers credit"],
+      "Risk Reduction": "Reduces forex risk",
+      "Cost Reduction": "Lowers borrowing costs",
+      "Hedging": "Lets you hedge foreign exchange risk"
+    }
+  },
+  "Insta-Secured Overdraft Facility": {
+    "Description": "This is a secured overdraft facility available instantly from ICICI Bank.",
+    "Features": {
+      "Processing": "Contact-less online processing",
+      "Sanction": "Instant",
+      "Pre-qualified Offers": "For existing ICICI customers",
+      "Financial Documentation": "Not required",
+      "Loan Amount": "Up to Rs. 1 crore"
+    }
+  }
+}
