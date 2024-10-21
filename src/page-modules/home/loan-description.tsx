@@ -36,7 +36,7 @@ const ParseJsonPrinter: React.FC<ParseJsonPrinterProps> = ({ data }) => {
         typeof data === "object" &&
         Object.keys(data).map((_dataKey, index) => {
           return (
-            <div className="flex gap-2 flex-wrap whitespace-pre" key={index}>
+            <div className="flex gap-2 flex-wrap" key={index}>
               <div className="text-sm lg:text-base font-semibold">
                 {_dataKey}:
               </div>
