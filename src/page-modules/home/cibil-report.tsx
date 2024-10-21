@@ -44,7 +44,7 @@ const CibilReport: React.FC<CibilReportProps> = ({}) => {
           </div>
           <div className="flex items-center gap-4 w-full">
             <Dropdown
-              className="text-sm lg:text-sm 3xl:text-base w-[8rem]"
+              className="text-base lg:text-base 3xl:text-base w-[8rem]"
               selected={namePrefix}
               setSelected={setNamePrefix}
               options={namePrefixes}
@@ -62,7 +62,7 @@ const CibilReport: React.FC<CibilReportProps> = ({}) => {
           {/* id type feild */}
           <div className="text-sm lg:text-base text-neutral-400">ID Type*</div>
           <Dropdown
-            className="text-sm lg:text-sm 3xl:text-base w-[15rem]"
+            className="text-base lg:text-base 3xl:text-base w-[15rem]"
             selected={idType}
             setSelected={setIdType}
             options={idTypes}
