@@ -47,7 +47,7 @@ const Home = () => {
           />
           {selectedLoanProduct !== "" &&
             loanProductKeys.includes(selectedLoanProduct) && (
-              <div className="w-full lg:hidden h-full rounded-lg border border-gray-200 overflow-y-scroll overflow-x-hidden">
+              <div className="w-full lg:hidden h-full max-h-[80%] rounded-lg border border-gray-200 overflow-y-scroll overflow-x-hidden">
                 <LoanDescription
                   data={
                     loanProducts[
