@@ -5,6 +5,9 @@ import LoanDescription from "./loan-description";
 import CibilReport from "./cibil-report";
 import CrifReport from "./crif-report";
 import Uploader from "@/components/input/uploader";
+import AccAggregator from "./acc-aggregator";
+
+import { ArrowDownTrayIcon } from "@heroicons/react/24/solid";
 
 // Define the types for each product's details
 interface LoanProductDetails {
@@ -21,9 +24,15 @@ interface LoanProducts {
 import loanProducts from "@/config/loan-products.json" assert { type: "json" };
 
 const Home = () => {
+  const loanProductKeys = Object.keys(loanProducts as LoanProducts);
   const [selectedLoanProduct, setSelectedLoanProduct] = useState("");
   const [applyClick1, setApplyClick1] = useState(false);
-  const loanProductKeys = Object.keys(loanProducts as LoanProducts);
+
+  const [cibilComplete, setCibilComplete] = useState(false);
+  const [crifComplete, setCrifComplete] = useState(false);
+  const [accAggComplete, setAccAggComplete] = useState(false);
+
+  const [applyClick2, setApplyClick2] = useState(false);
 
   // eslint-disable-next-line
   const [propertyReportFile, setProperyReportFile] = useState<File | undefined>(
@@ -44,6 +53,7 @@ const Home = () => {
             selected={selectedLoanProduct}
             setSelected={setSelectedLoanProduct}
             selectPlaceholder={"Select Loan Product"}
+            disabled={applyClick2}
           />
           {selectedLoanProduct !== "" &&
             loanProductKeys.includes(selectedLoanProduct) && (
@@ -76,24 +86,84 @@ const Home = () => {
               disabled={selectedLoanProduct === ""}
               onClick={() => setApplyClick1(true)}
             >
-              Apply
+              Apply Loan
             </Button>
           )}
 
           {applyClick1 && (
-            <div className="w-full rounded-lg border-2 border-gray-200 p-2 text-neutral-500 font-bold text-lg lg:text-xl flex flex-col gap-4">
-              <div className="p-2 pb-0">Property Valuation Report</div>
-              <Uploader
-                setFile={(file) => {
-                  setProperyReportFile(file);
-                }}
-              />
-            </div>
-          )}
-          {applyClick1 && (
             <>
-              <CibilReport />
-              <CrifReport />
+              <AccAggregator
+                processComplete={accAggComplete}
+                setProcessComplete={setAccAggComplete}
+              />
+              <div className="w-full rounded-lg border-2 border-gray-200 p-2 text-neutral-500 font-bold text-lg lg:text-xl flex flex-col gap-4">
+                <div className="p-2 pb-0">Property Valuation Report</div>
+                <Uploader
+                  setFile={(file) => {
+                    setProperyReportFile(file);
+                  }}
+                  disabled={applyClick2}
+                />
+              </div>
+              <CibilReport
+                processComplete={cibilComplete}
+                setProcessComplete={setCibilComplete}
+              />
+              <CrifReport
+                processComplete={crifComplete}
+                setProcessComplete={setCrifComplete}
+              />
+            </>
+          )}
+          {applyClick1 && !applyClick2 && (
+            <Button
+              className="uppercase"
+              fullWidth
+              color={
+                propertyReportFile !== undefined &&
+                accAggComplete &&
+                cibilComplete &&
+                crifComplete
+                  ? "primarySolid"
+                  : "graySolid"
+              }
+              disabled={
+                !(
+                  propertyReportFile !== undefined &&
+                  accAggComplete &&
+                  cibilComplete &&
+                  crifComplete
+                )
+              }
+              onClick={() => setApplyClick2(true)}
+            >
+              Apply Loan
+            </Button>
+          )}
+
+          {applyClick1 && applyClick2 && (
+            <>
+              <div className="my-4 text-lg lg:text-xl text-primary-500 uppercase font-bold tracking-widest w-full text-center">
+                Application Submitted
+              </div>
+              <Button
+                fullWidth
+                color="blueSolid"
+                className="flex gap-2 items-center justify-center"
+              >
+                <div>Generated Loan Application</div>
+                <ArrowDownTrayIcon className="w-4 h-4 lg:w-5 lg:h-5" />
+              </Button>
+              <div className="w-full rounded-lg border-2 border-gray-200 py-4 px-6 flex flex-col gap-4 font-semibold text-lg lg:text-xl text-neutral-500">
+                <div className="flex items-center gap-2">
+                  <div>Chance of Approval -</div>
+                  <div>80%</div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div>Time to Disbursal -</div>
+                  <div>3 weeks*</div>
+                </div>
+              </div>
             </>
           )}
         </div>

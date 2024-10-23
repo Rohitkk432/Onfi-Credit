@@ -30,8 +30,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <span
             className={cn(
-              "block text-xs font-medium tracking-widest text-gray-100 xl:text-sm 3xl:text-base",
-              useUppercaseLabel ? "mb-2 uppercase sm:mb-3" : "mb-2",
+              "block text-xs font-semibold tracking-wider text-neutral-500 xl:text-sm 3xl:text-base mb-2",
+              useUppercaseLabel ? "uppercase" : "",
             )}
           >
             {label}

@@ -12,6 +12,7 @@ interface UploaderProps {
   fileTypeLabel?: string;
   fileFormatLabel?: string;
   accepts?: "image" | "document";
+  disabled?: boolean;
 }
 
 const Uploader: React.FC<UploaderProps> = ({
@@ -22,6 +23,7 @@ const Uploader: React.FC<UploaderProps> = ({
   fileTypeLabel = "document file",
   fileFormatLabel = "only .pdf format is supported. must be < 15 MB",
   accepts = "document",
+  disabled = false,
 }) => {
   const [files, setFiles] = useState([]);
 
@@ -106,7 +108,7 @@ const Uploader: React.FC<UploaderProps> = ({
             className: "h-full flex items-center justify-center rounded-lg",
           })}
         >
-          <input {...getInputProps()} />
+          <input {...getInputProps()} disabled={disabled} />
           {files.length > 0 ? (
             thumbs
           ) : (

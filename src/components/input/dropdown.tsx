@@ -26,7 +26,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   dropdownHeight,
   dataKey,
   selectPlaceholder,
-  disabled,
+  disabled = false,
 }) => {
   const [open, setOpen] = useState(false);
 

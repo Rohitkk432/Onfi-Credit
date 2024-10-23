@@ -10,6 +10,9 @@ type ColorNames =
   | "primaryOutline"
   | "primarySolid"
   | "primaryTransparent"
+  | "blueOutline"
+  | "blueSolid"
+  | "blueTransparent"
   | "grayOutline"
   | "graySolid"
   | "grayTransparent"
@@ -34,6 +37,9 @@ const colorThemes: Record<ColorNames, string> = {
   primaryOutline: "border-primary-500 text-primary-500 bg-white",
   primarySolid: "border-primary-500 text-white bg-primary-500",
   primaryTransparent: "border-none text-neutral-500 bg-primary-transparent",
+  blueOutline: "border-blue-500 text-blue-500 bg-white",
+  blueSolid: "border-blue-500 text-white bg-blue-500",
+  blueTransparent: "border-none text-neutral-500 bg-blue-transparent",
   grayOutline: "border-gray-400 text-gray-400 bg-white",
   graySolid: "border-gray-400 text-white bg-gray-400",
   grayTransparent: "border-white text-neutral-500 bg-[#6b72804d]",
